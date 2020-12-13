@@ -1,0 +1,12 @@
+.bar {
+  width: 100%;
+  margin-top: 35px;
+}
+
+button {
+  background-color: #7747c4;
+  padding: 10px;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 1px 1px 2px;
+}
