@@ -46,6 +46,12 @@ const App: React.FC = () => {
   }
 
   const putWaterHandler: (rowIndex: number, colIndex:  number) => void = useCallback((rowIndex: number, colIndex: number) => {
+
+    // for(let i = 0; i<listToFlood.length; i ++) {
+    //   if(!matrixState[list][rowIndex].value === null || matrixState[colIndex][rowIndex].isWet) {
+
+    //   }
+    // }
     if(matrixState[colIndex][rowIndex].value === null || matrixState[colIndex][rowIndex].isWet) {
       return
     } else {
