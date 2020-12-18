@@ -5,11 +5,16 @@ interface mtxCell {
     value: number | null,
     isWet: boolean,
     
+}
+
+interface coordinates {
+    rowIdx: number,
+    colIdx: number,
   }
 
 interface ColCompPropType {
     row: mtxCell[],
-    clicked: (rowIndex: number, colIndex: number) => void
+    clicked: (cell: coordinates[]) => void
     colIndex: number
 }
 

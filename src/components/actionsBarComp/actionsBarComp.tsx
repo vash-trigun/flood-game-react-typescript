@@ -1,17 +1,21 @@
 import React from 'react';
-import PropTypes from  'prop-types'
+
 import './actionsBarComp.css'
+
+import DropDown from './dropDownComp/dropDownComp';
 
 interface ActionBarPropType {
     clicked: () => void
+    changed: (size: string) => void
 }
 
 const ActionBar: React.FC<ActionBarPropType> = (props) => {
 
-    const {clicked} = props
+    const {clicked, changed} = props
     return (
         <div className="bar">
             <button onClick={() => clicked()}>Gerate</button>
+            <DropDown changed={changed}/>
         </div>
     )
 }

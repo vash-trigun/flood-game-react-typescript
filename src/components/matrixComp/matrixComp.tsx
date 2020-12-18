@@ -7,11 +7,14 @@ import './matrixComp.css'
 interface mtxCell {
     value: number | null
     isWet: boolean
+}
+interface coordinates {
+    rowIdx: number,
+    colIdx: number,
   }
-
 interface matrixProps {
     matrix: mtxCell[][]
-    clicked: (rowIndex: number, colIndex: number) => void
+    clicked: (cell: coordinates[]) => void
 }
 
 const MatrixComp: React.FC<matrixProps> = (props) => {

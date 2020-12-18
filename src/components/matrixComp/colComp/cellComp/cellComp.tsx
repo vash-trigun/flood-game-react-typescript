@@ -4,11 +4,14 @@ import './cellComp.css'
 interface mtxCell {
     value: number | null
     isWet: boolean
-  }
-
+}
+interface coordinates {
+    rowIdx: number,
+    colIdx: number,
+}
 interface CellCompPropType {
     cell: mtxCell
-    clicked: (rowIndex: number, colIndex: number) => void
+    clicked: (cell: coordinates[]) => void
     rowIndex: number
     colIndex: number
 }
@@ -22,9 +25,16 @@ const CellComp: React.FC<CellCompPropType> = (props) => {
     const waterColor: string | null = cell.isWet ? 'water' : 'blank'
     
     return (
-        <div className={`cell`} onClick={() => clicked(rowIndex, colIndex)}>
-        <div className={`cell ${waterColor}`}></div>
-        <div className={`cell ${style}`}>{cell.value}</div>
+        <div className={`cell`} onClick={() => clicked([{rowIdx: rowIndex, colIdx: colIndex}])}>
+        <div className={`cell ${waterColor}`}>
+            {/*JUST TO CHECK IF IT'S WORKING PROPERLY*/}
+            {/* {cell.isWet ? cell.value : null} */}
+        </div>
+        <div className={`cell ${style}`}>
+            {/*JUST TO CHECK IF IT'S WORKING PROPERLY*/}
+            {/* {!cell.isWet ? cell.value : null} */}
+            {cell.value}
+        </div>
         </div>
     )
 }

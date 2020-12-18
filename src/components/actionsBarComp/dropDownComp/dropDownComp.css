@@ -1,0 +1,28 @@
+.dropdownButton {
+  background-color: #b47a38;
+  padding: 10px;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 1px 1px 2px;
+  cursor: pointer;
+  height: 40px;
+  position: relative;
+}
+
+.dropdownContent {
+  position: absolute;
+  background-color: rgb(69, 195, 58);
+  width: 150px;
+  /* padding: 5px; */
+  left: 0;
+  top: -103px;
+  /* height:  */
+}
+
+.dropdownItem {
+  padding: 10px;
+}
+
+.dropdownItem:hover {
+  background-color: rgb(12, 107, 12);
+}
