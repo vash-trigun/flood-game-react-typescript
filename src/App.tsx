@@ -4,30 +4,18 @@ import './App.css';
 
 import {Matrix, ActionBar} from './components'
 
-interface mtxCell {
-  value: number | null
-  isWet: boolean
-}
+import {IMtxCell, ISize, ICoordinates} from '../src/shared/interfaces'
 
-interface coordinates {
-  rowIdx: number,
-  colIdx: number,
-}
 
-interface size {
-  rowsSize: number,
-  colsSize: number
-}
-
-type mtxType = mtxCell[][]
+type mtxType = IMtxCell[][]
 
 const App: React.FC = () => {
-  const [matrixSize, setMatrixSize] = useState<size>({
+  const [matrixSize, setMatrixSize] = useState<ISize>({
     rowsSize: 17,
     colsSize: 17
   })
   
-  const initMatrixHandler: (size: size) => mtxType = (size) => {
+  const initMatrixHandler: (size: ISize) => mtxType = (size) => {
     let matrix: mtxType = [];
     for(let i = 0; i<size.colsSize; i++) {
       matrix[i] = []
@@ -58,7 +46,7 @@ const App: React.FC = () => {
     setMatrixState([...newMatrix])
   }
 
-  const putWaterHandler: (listNewWater:coordinates[]) => void = useCallback((listNewWater) => {
+  const putWaterHandler: (listNewWater:ICoordinates[]) => void = useCallback((listNewWater) => {
     let newMatrix: mtxType = [...matrixState];
     
     for(let i = 0; i<listNewWater.length; i++) {
@@ -69,8 +57,8 @@ const App: React.FC = () => {
       setMatrixState([...newMatrix])
   }, [matrixState])
 
-  const checkAroundHandler: (cell: coordinates) => coordinates[] = useCallback((cell) => {
-   const aroundList: coordinates[] = []
+  const checkAroundHandler: (cell: ICoordinates) => ICoordinates[] = useCallback((cell) => {
+   const aroundList: ICoordinates[] = []
    const minColIndex: number = (cell.colIdx - 1 > -1) ? cell.colIdx - 1 : 0
    const maxColIndex: number = (cell.colIdx + 2 > matrixSize.colsSize) ? matrixSize.colsSize : cell.colIdx + 2
    const minRowIndex: number = (cell.rowIdx - 1 > -1) ? cell.rowIdx -1 : 0
@@ -88,8 +76,8 @@ const App: React.FC = () => {
    return aroundList
   },[matrixState, matrixSize])
 
-  const findWaterHandler: () => coordinates[]= useCallback( () => {
-    const waterList: coordinates[] = []
+  const findWaterHandler: () => ICoordinates[]= useCallback( () => {
+    const waterList: ICoordinates[] = []
     for(let i = 0; i<matrixState.length; i++) {
       for(let j = 0; j< matrixState[i].length; j++) {
         if(matrixState[i][j].isWet) {
@@ -108,7 +96,7 @@ const App: React.FC = () => {
     const timer = setTimeout(() => {
       const waterList = findWaterHandler()
       if(waterList.length > 0) {
-        let newWaterList: coordinates[] = []
+        let newWaterList: ICoordinates[] = []
         for(let i=0; i<waterList.length; i++) {
           const aroundList = checkAroundHandler(waterList[i])
           newWaterList = newWaterList.concat(aroundList)

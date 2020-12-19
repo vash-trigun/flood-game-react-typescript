@@ -1,23 +1,12 @@
 import React from 'react';
 
-import Cols from './colComp/colComp'
+import Cols from './ColComp/ColComp'
 
-import './matrixComp.css'
+import './MatrixComp.css'
 
-interface mtxCell {
-    value: number | null
-    isWet: boolean
-}
-interface coordinates {
-    rowIdx: number,
-    colIdx: number,
-  }
-interface matrixProps {
-    matrix: mtxCell[][]
-    clicked: (cell: coordinates[]) => void
-}
+import {IMatrixProps } from '../../shared/interfaces'
 
-const MatrixComp: React.FC<matrixProps> = (props) => {
+const MatrixComp: React.FC<IMatrixProps> = (props) => {
 
     const {matrix, clicked} = props
 

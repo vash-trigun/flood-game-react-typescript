@@ -1,22 +1,9 @@
 import React from 'react'
-import './cellComp.css'
+import './CellComp.css'
 
-interface mtxCell {
-    value: number | null
-    isWet: boolean
-}
-interface coordinates {
-    rowIdx: number,
-    colIdx: number,
-}
-interface CellCompPropType {
-    cell: mtxCell
-    clicked: (cell: coordinates[]) => void
-    rowIndex: number
-    colIndex: number
-}
+import {ICellCompProps} from '../../../../shared/interfaces'
 
-const CellComp: React.FC<CellCompPropType> = (props) => {
+const CellComp: React.FC<ICellCompProps> = (props) => {
 
     const {cell, clicked, rowIndex, colIndex} = props
 

@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 
-import './dropDownComp.css'
+import './DropDownComp.css'
 
-interface dropDownCompType {
-    changed: (size: string) => void
-}
+import {IDropDownCompProps} from '../../../shared/interfaces'
 
-const DropDownComp: React.FC<dropDownCompType> = (props) => {
+const DropDownComp: React.FC<IDropDownCompProps> = (props) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const {changed} = props

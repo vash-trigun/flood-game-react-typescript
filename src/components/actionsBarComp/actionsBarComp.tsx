@@ -1,15 +1,12 @@
 import React from 'react';
 
-import './actionsBarComp.css'
+import './ActionsBarComp.css'
 
-import DropDown from './dropDownComp/dropDownComp';
+import DropDown from './DropDownComp/DropDownComp';
 
-interface ActionBarPropType {
-    clicked: () => void
-    changed: (size: string) => void
-}
+import {IActionBarProps} from '../../shared/interfaces'
 
-const ActionBar: React.FC<ActionBarPropType> = (props) => {
+const ActionBar: React.FC<IActionBarProps> = (props) => {
 
     const {clicked, changed} = props
     return (
